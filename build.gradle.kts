@@ -1,6 +1,6 @@
 plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
-    id("io.micronaut.application") version "4.0.4"
+    id("io.micronaut.minimal.application") version "4.0.4"
     id("io.micronaut.aot") version "4.0.4"
 }
 
@@ -33,24 +33,12 @@ java {
     targetCompatibility = JavaVersion.toVersion("17")
 }
 
-graalvmNative.toolchainDetection.set(false)
 micronaut {
     runtime("netty")
     testRuntime("junit5")
     processing {
         incremental(true)
         annotations("com.example.*")
-    }
-    aot {
-    // Please review carefully the optimizations enabled below
-    // Check https://micronaut-projects.github.io/micronaut-aot/latest/guide/ for more details
-        optimizeServiceLoading.set(false)
-        convertYamlToJava.set(false)
-        precomputeOperations.set(true)
-        cacheEnvironment.set(true)
-        optimizeClassLoading.set(true)
-        deduceEnvironment.set(true)
-        optimizeNetty.set(true)
     }
 }
 

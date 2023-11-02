@@ -13,6 +13,9 @@ class DemoTest {
     @Inject
     EmbeddedApplication<?> application;
 
+    @Inject
+    FormulaController controller;
+
     @Test
     void testItWorks() {
         Assertions.assertTrue(application.isRunning());
